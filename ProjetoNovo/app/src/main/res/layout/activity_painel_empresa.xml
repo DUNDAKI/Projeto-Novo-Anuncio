@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ACTIVITYS.Painel_Empresa">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Painel Empresa"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="364dp"
+        tools:ignore="MissingConstraints" />
+
+    <ListView
+        android:id="@+id/listViewEmpresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
