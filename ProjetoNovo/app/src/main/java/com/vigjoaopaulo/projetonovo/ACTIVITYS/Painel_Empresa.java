@@ -20,6 +20,7 @@ public class Painel_Empresa extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel_empresa);
+        setTitle("Gerenciamento de produtos");
         listView = (ListView) findViewById(R.id.listViewEmpresa);
         listView.setAdapter(new AnuncioAdapter(Painel_Empresa.this, R.layout.modelo, getPProduto()));
         TextView nota = (TextView) findViewById(R.id.txtNota);
@@ -45,6 +46,14 @@ public class Painel_Empresa extends AppCompatActivity {
 
         a = new Anuncios(3, "Posto Araraquara","Diesel",
                 5.999, "Araraquara", "161", "Ibaté","SP", 1);
+        anuncios.add(a);
+
+        a = new Anuncios(4, "Posto Araraquara","Diesel",
+                5.999, "Araraquara", "161", "Ibaté","SP", 4);
+        anuncios.add(a);
+
+        a = new Anuncios(5, "Posto Araraquara","Diesel",
+                5.999, "Araraquara", "161", "Ibaté","SP", 5);
         anuncios.add(a);
 
         return anuncios;

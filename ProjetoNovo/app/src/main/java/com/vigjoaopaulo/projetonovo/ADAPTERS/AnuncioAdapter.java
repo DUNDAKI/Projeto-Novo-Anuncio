@@ -3,6 +3,9 @@ package com.vigjoaopaulo.projetonovo.ADAPTERS;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.vigjoaopaulo.projetonovo.ACTIVITYS.Painel_Empresa;
 import com.vigjoaopaulo.projetonovo.MODEL.Anuncios;
@@ -62,12 +66,36 @@ public class AnuncioAdapter extends ArrayAdapter<Anuncios> {
         cidade.setText(String.format("Cidade: %s ", anuncios.get(position).getCidade()));
         estado.setText(String.format("Estado: %s ", anuncios.get(position).getEstado()));
         nota.setText(String.format("Nota: %s ", anuncios.get(position).getNota()));
+        nota.setVisibility(View.INVISIBLE);
         ratingBar.setRating(anuncios.get(position).getNota());
+        ratingBar.setEnabled(false);
+        ratingBar.setIsIndicator(true);
+
+        int n = anuncios.get(position).getNota();
+
+        Drawable progress = ratingBar.getProgressDrawable();
+        Log.e("nota", String.valueOf(n));
+        if (n == 1) {
+            DrawableCompat.setTint(progress, Color.RED);
+            ratingBar.setEnabled(true);
+        }else if (n == 2) {
+            DrawableCompat.setTint(progress, Color.MAGENTA);
+            ratingBar.setEnabled(true);
+        }else if(n == 3){
+            DrawableCompat.setTint(progress, Color.YELLOW);
+            ratingBar.setEnabled(true);
+        }else if(n == 4){
+            DrawableCompat.setTint(progress, Color.DKGRAY);
+            ratingBar.setEnabled(true);
+        }else if(n == 5){
+            DrawableCompat.setTint(progress, Color.GREEN);
+            ratingBar.setEnabled(true);
+
+        }
 
 
 
-
-        //Log.e("count", String.valueOf(count));
+ //Log.e("count", String.valueOf(count));
 
 
 //        if(id==null && id.equals("")){
@@ -91,11 +119,11 @@ public class AnuncioAdapter extends ArrayAdapter<Anuncios> {
 //        });
 
 
-        if (position % 2 == 0) {
-            rowView.setBackgroundColor(Color.CYAN);
-        } else {
-            rowView.setBackgroundColor(Color.YELLOW);
-        }
+//        if (position % 2 == 0) {
+//            rowView.setBackgroundColor(Color.CYAN);
+//        } else {
+//            rowView.setBackgroundColor(Color.YELLOW);
+//        }
         return rowView;
     }
 }
